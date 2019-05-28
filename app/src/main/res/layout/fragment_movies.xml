@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable name="viewModel" type="com.varol.movier.viewmodel.MoviesVM"/>
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+    >
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        <ProgressBar
+                android:id="@+id/pbLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{safeUnbox(viewModel.isLoading)? View.VISIBLE:View.GONE}"
+                tools:visibility="visible"
+                app:layout_anchorGravity="center|center"
+                app:layout_anchor="@+id/rvMovies"
+
+
+        />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>
