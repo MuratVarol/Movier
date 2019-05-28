@@ -1,0 +1,13 @@
+package com.varol.movier.extension
+
+import io.reactivex.Single
+import io.reactivex.exceptions.CompositeException
+
+inline fun <T> Single<T>.dropBreadcrumb(): Single<T> {
+    val breadcrumb = BreadcrumbException()
+    return this.onErrorResumeNext { error: Throwable ->
+        throw CompositeException(error, breadcrumb)
+    }
+}
+
+class BreadcrumbException : Exception()
