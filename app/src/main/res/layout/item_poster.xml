@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <variable
+                name="model"
+                type="com.varol.movier.viewmodel.MoviesVM"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+    >
+        <ImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="2:3"
+
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@drawable/ph_poster"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
