@@ -1,12 +1,17 @@
 package com.varol.movier
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.varol.movier.base.BaseActivity
+import com.varol.movier.databinding.ActivityMainBinding
+import com.varol.movier.viewmodel.MainVM
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : BaseActivity<MainVM, ActivityMainBinding>(MainVM::class) {
+    override val layoutRes: Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+
     }
 }
