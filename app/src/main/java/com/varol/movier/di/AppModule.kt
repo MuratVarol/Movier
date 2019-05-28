@@ -16,5 +16,5 @@ val appModule = module {
  * returns country code Example: "us" for United States
  */
 fun getLocaleLanguage() {
-    Locale.getDefault().country.toLowerCase()
+    Locale.getDefault().country
 }
