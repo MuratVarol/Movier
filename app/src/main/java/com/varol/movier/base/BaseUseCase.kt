@@ -1,3 +1,3 @@
 package com.varol.movier.base
 
-open class BaseUseCase()
+open class BaseUseCase
