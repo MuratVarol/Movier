@@ -1,9 +1,10 @@
-package com.varol.movier
+package com.varol.movier.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.varol.movier.R
 import com.varol.movier.base.BaseFragment
 import com.varol.movier.databinding.FragmentMoviesBinding
 import com.varol.movier.viewmodel.MoviesVM

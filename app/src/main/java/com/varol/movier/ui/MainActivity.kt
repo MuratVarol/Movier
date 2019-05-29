@@ -1,6 +1,7 @@
-package com.varol.movier
+package com.varol.movier.ui
 
 import android.os.Bundle
+import com.varol.movier.R
 import com.varol.movier.base.BaseActivity
 import com.varol.movier.databinding.ActivityMainBinding
 import com.varol.movier.viewmodel.MainVM
