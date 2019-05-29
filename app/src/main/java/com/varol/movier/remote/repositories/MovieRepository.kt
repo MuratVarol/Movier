@@ -9,15 +9,14 @@ import com.varol.movier.remote.DataHolder
 import io.reactivex.Single
 
 class MovieRepository(
-    private val api: Api,
-    private val langCode: String
+    private val api: Api
 ) : BaseRepository() {
 
     fun getMovies(
         movieType: String,
         apiKey: String,
         page: Int = 1,
-        language: String = langCode,
+        language: String,
         region: String = ""
     ): Single<DataHolder<BaseMoviesResponse<MutableList<MoviesModel>>>> {
         return service.sendRequest(
