@@ -2,7 +2,7 @@ package com.varol.movier.remote.repositories
 
 import com.varol.movier.base.BaseRepository
 import com.varol.movier.base.service
-import com.varol.movier.entity.MoviesModel
+import com.varol.movier.model.MoviesModel
 import com.varol.movier.remote.Api
 import com.varol.movier.remote.BaseMoviesResponse
 import com.varol.movier.remote.DataHolder

@@ -1,7 +1,7 @@
 package com.varol.movier.usecase
 
 import com.varol.movier.base.BaseUseCase
-import com.varol.movier.entity.MoviesModel
+import com.varol.movier.model.MoviesModel
 import com.varol.movier.remote.BaseMoviesResponse
 import com.varol.movier.remote.DataHolder
 import com.varol.movier.remote.MovieTypes

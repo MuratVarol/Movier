@@ -1,6 +1,6 @@
 package com.varol.movier.remote
 
-import com.varol.movier.entity.MoviesModel
+import com.varol.movier.model.MoviesModel
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

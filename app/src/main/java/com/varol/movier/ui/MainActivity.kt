@@ -13,6 +13,7 @@ class MainActivity : BaseActivity<MainVM, ActivityMainBinding>(MainVM::class) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        loadFragment(R.id.frmMainContainer, MoviesFragment(), true)
 
     }
 }

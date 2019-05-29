@@ -1,4 +1,4 @@
-package com.varol.movier.entity
+package com.varol.movier.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
