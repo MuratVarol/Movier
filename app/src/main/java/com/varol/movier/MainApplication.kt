@@ -3,6 +3,8 @@ package com.varol.movier
 import android.app.Application
 import com.varol.movier.di.appModule
 import com.varol.movier.di.networkModule
+import com.varol.movier.di.useCaseModule
+import com.varol.movier.di.viewModelModule
 import org.koin.android.ext.android.startKoin
 
 class MainApplication : Application() {
@@ -17,7 +19,9 @@ class MainApplication : Application() {
             this,
             listOf(
                 appModule,
-                networkModule
+                networkModule,
+                useCaseModule,
+                viewModelModule
             )
         )
     }
