@@ -17,10 +17,12 @@ class MovieRepository(
         apiKey: String,
         page: Int = 1,
         language: String,
+        url: String = "discover/movie/",
         region: String = ""
     ): Single<DataHolder<BaseMoviesResponse<MutableList<MoviesModel>>>> {
         return service.sendRequest(
             api.getMovies(
+                url,
                 movieType,
                 apiKey,
                 page,
