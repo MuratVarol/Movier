@@ -16,4 +16,11 @@ class MainActivity : BaseActivity<MainVM, ActivityMainBinding>(MainVM::class) {
         loadFragment(R.id.frmMainContainer, MoviesFragment(), true)
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount <= 0) {
+            finish()
+        }
+    }
 }
