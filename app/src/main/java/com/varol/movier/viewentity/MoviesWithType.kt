@@ -9,4 +9,12 @@ class MoviesWithType(
     val movies: MutableList<MoviesModel>?,
     val itemClickListener: ItemClickListener<MoviesModel>?
 
-)
+) {
+    val getType: String
+        get() = when (type) {
+            is MovieTypes.Popular -> "Popular"
+            is MovieTypes.TopRated -> "Top Rated"
+            is MovieTypes.Revenue -> "Top Sell"
+        }
+
+}
