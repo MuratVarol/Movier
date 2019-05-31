@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.varol.movier.R
 import com.varol.movier.base.BaseFragment
 import com.varol.movier.databinding.FragmentMoviesBinding
@@ -65,6 +66,15 @@ class MoviesFragment : BaseFragment<MoviesVM, FragmentMoviesBinding>(MoviesVM::c
                 }
                 loadFragment(R.id.frmMainContainer, singleTypeMoviesFragment, fragmentManager, true)
             }
+        }
+    }
+
+    /**
+     * informMessage subscriber for showing toast
+     */
+    private fun suscribeInformMessage() {
+        viewModel.informMessage.observe(this) {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
     }
 
