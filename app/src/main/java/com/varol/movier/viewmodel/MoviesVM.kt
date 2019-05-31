@@ -26,6 +26,8 @@ class MoviesVM(
 
     val selectedMovie = SingleLiveEvent<MoviesModel>()
 
+    val isNeedToResetScrollState = SingleLiveEvent<Boolean>()
+
     val isLoading = SingleLiveEvent<Boolean>()
     val isRefreshing = SingleLiveEvent<Boolean>()
 
@@ -92,13 +94,27 @@ class MoviesVM(
 
                     is DataHolder.Success -> {
 
+
                         val moviesWithType = MoviesWithType(
                             movieType,
                             data.data.results,
                             subItemClickListener
                         )
+
+                        isNeedToResetScrollState.postValue(true)
+
                         moviesWithTypeList.add(moviesWithType)
                         startScreenMovieList.postValue(moviesWithTypeList)
+
+                        singleSelectedMovies.value?.let { selectedMovieList ->
+                            if (movieType.name == selectedMovieList.first) {
+                                singleSelectedMovies.postValue(
+                                    Pair(
+                                        selectedMovieList.first,
+                                        moviesWithTypeList.filter { it.type.name == selectedMovieList.first }.flatMap { it.movies as MutableList } as MutableList<MoviesModel>))
+                            }
+                        }
+
 
 //                            startScreenMovieList.value?.filter {
 //                                it.typeName == MovieTypes.TopRated.name
