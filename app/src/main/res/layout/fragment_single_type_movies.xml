@@ -14,34 +14,21 @@
             android:layout_height="match_parent">
 
 
-        <TextView
-                android:id="@+id/tvMovieTypeHeader"
-                android:text="@{viewModel.singleSelectedMovies.first}"
-                android:textSize="40sp"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="POPULAR"
-
-        />
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMovies"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:spanCount="2"
-                android:layout_marginTop="@dimen/margin_half"
                 app:itemClickListener="@{viewModel.subItemClickListener}"
                 app:itemLayoutId="@{@layout/item_poster}"
                 app:itemList="@{viewModel.singleSelectedMovies.second}"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layoutManager=".util.SpanningGridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMovieTypeHeader"
+                app:layout_constraintTop_toBottomOf="parent"
                 tools:listitem="@layout/item_poster">
 
         </androidx.recyclerview.widget.RecyclerView>
