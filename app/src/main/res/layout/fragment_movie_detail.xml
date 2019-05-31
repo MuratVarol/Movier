@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable name="viewModel" type="com.varol.movier.viewmodel.MovieDetailVM"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+    >
+
+        <ImageView
+                android:id="@+id/ivBanner"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="4:3"
+                app:imageUrl="@{viewModel.selectedMovie.backDropFullPath}"
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ph_poster"
+        />
+
+
+        <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Avengers : Infinity War"
+                android:text="@{viewModel.selectedMovie.title}"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivBanner"/>
+
+
+        <RatingBar
+                android:id="@+id/ratingMovie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_margin="@dimen/margin_normal"
+
+                android:numStars="10"
+                android:stepSize="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.selectedMovie.voteAverage + `/10`}"
+                tools:text="8.7/10"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintLeft_toRightOf="@+id/ratingMovie"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
+
+        <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.selectedMovie.overview}"
+                tools:text="Not a bad movie"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingMovie"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
