@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <import
+                type="android.view.View"
+        />
+
+        <variable
+                name="model"
+                type="com.varol.movier.viewentity.MoviesWithType"
+        />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/clInnerRv"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/tvMovieTypeHeader"
+                android:text="@{model.getType}"
+                android:textSize="40sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="POPULAR"
+
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMoviesSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:itemClickListener="@{model.itemClickListener}"
+                app:itemLayoutId="@{@layout/item_poster}"
+                app:itemList="@{model.movies}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMovieTypeHeader"
+                tools:listitem="@layout/item_poster"
+
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
