@@ -16,14 +16,15 @@ import io.reactivex.Observable
 class MoviesVM(
     private val getMoviesUseCase: GetMoviesUseCase
 ) : BaseVM() {
-    val popularMovieViewEntityList = MutableLiveData<MutableList<MoviesModel>>()
-    val upcomingMovieViewEntityList = MutableLiveData<MutableList<MoviesModel>>()
-    val topRatedMovieViewEntityList = MutableLiveData<MutableList<MoviesModel>>()
 
     val moviesWithTypeList = mutableListOf<MoviesWithType>()
 
 
     val startScreenMovieList = MutableLiveData<MutableList<MoviesWithType>>()
+
+    val singleSelectedMovies = SingleLiveEvent<Pair<String, MutableList<MoviesModel>?>>()
+
+    val selectedMovie = SingleLiveEvent<MoviesModel>()
 
     val isLoading = SingleLiveEvent<Boolean>()
     val isRefreshing = SingleLiveEvent<Boolean>()
@@ -38,12 +39,13 @@ class MoviesVM(
     val itemClickListener = object : ItemClickListener<MoviesWithType> {
         override fun onItemClick(view: View, item: MoviesWithType, position: Int) {
             Log.v("onItemClick", item.type.name)
+            singleSelectedMovies.postValue(Pair(item.type.name, item.movies))
         }
     }
 
     val subItemClickListener = object : ItemClickListener<MoviesModel> {
         override fun onItemClick(view: View, item: MoviesModel, position: Int) {
-            Log.v("onItemClick", item.title)
+            selectedMovie.postValue(item)
         }
 
     }
@@ -53,7 +55,7 @@ class MoviesVM(
     }
 
     fun getAllMovies() {
-        val disposable = Observable.just(getPopularMovies(), getTopRatedMovies())
+        val disposable = Observable.just(getPopularMovies(), getTopRatedMovies(), getTopSelledMovies())
             .subscribe()
         disposables.add(disposable)
 
@@ -69,6 +71,10 @@ class MoviesVM(
 
     fun getTopRatedMovies(page: Int = 1) {
         getMoviesByType(MovieTypes.TopRated, page)
+    }
+
+    fun getTopSelledMovies(page: Int = 1) {
+        getMoviesByType(MovieTypes.Revenue, page)
     }
 
     private fun getMoviesByType(movieType: MovieTypes, page: Int) {
