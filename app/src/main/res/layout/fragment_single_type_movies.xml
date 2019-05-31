@@ -24,7 +24,7 @@
                 app:itemClickListener="@{viewModel.subItemClickListener}"
                 app:itemLayoutId="@{@layout/item_poster}"
                 app:itemList="@{viewModel.singleSelectedMovies.second}"
-                app:layoutManager=".util.SpanningGridLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
