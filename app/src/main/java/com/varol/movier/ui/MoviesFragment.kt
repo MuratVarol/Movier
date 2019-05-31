@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import com.varol.movier.R
 import com.varol.movier.base.BaseFragment
 import com.varol.movier.databinding.FragmentMoviesBinding
+import com.varol.movier.model.MoviesModel
 import com.varol.movier.viewmodel.MoviesVM
+import observe
+import java.util.*
 
 class MoviesFragment : BaseFragment<MoviesVM, FragmentMoviesBinding>(MoviesVM::class) {
 
@@ -20,8 +23,40 @@ class MoviesFragment : BaseFragment<MoviesVM, FragmentMoviesBinding>(MoviesVM::c
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
+
+        subscribeSelectedMovie()
+        subscribeSelectedSingleTypeMovies()
+
+
         return binding.root
     }
 
+
+    private fun subscribeSelectedMovie() {
+        viewModel.selectedMovie.observe(this) {
+            it?.let { movieModel ->
+                val bundle = Bundle()
+                bundle.putParcelable(KEY_SELECTED_MOVIE, movieModel)
+                val movieDetailFragment = MovieDetailFragment().apply {
+                    arguments = bundle
+                }
+                loadFragment(R.id.frmMainContainer, movieDetailFragment, fragmentManager, true)
+            }
+        }
+    }
+
+    private fun subscribeSelectedSingleTypeMovies() {
+        viewModel.singleSelectedMovies.observe(this) {
+            it?.let { movieModelWithType ->
+                val bundle = Bundle()
+                bundle.putString(KEY_SELECTED_MOVIES_TYPE, it.first)
+                bundle.putParcelableArrayList(KEY_SELECTED_MOVIE, movieModelWithType.second as ArrayList<MoviesModel>)
+                val singleTypeMoviesFragment = SingleTypeMoviesFragment().apply {
+                    arguments = bundle
+                }
+                loadFragment(R.id.frmMainContainer, singleTypeMoviesFragment, fragmentManager, true)
+            }
+        }
+    }
 
 }
