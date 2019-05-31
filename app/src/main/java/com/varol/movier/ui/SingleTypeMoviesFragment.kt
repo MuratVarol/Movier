@@ -88,6 +88,9 @@ class SingleTypeMoviesFragment : BaseFragment<MoviesVM, FragmentSingleTypeMovies
 
     /**
      * RecyclerView endless scrolling listener
+     * TODO: check for moving endlessRecyclerViewScrollListener to inside of viewModel
+     * TODO: this could be trigger service on screen rotation.
+     *
      */
     private fun setRecyclerViewListeners() {
         val gridLayoutManager = GridLayoutManager(context, 2)
