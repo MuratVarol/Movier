@@ -16,6 +16,11 @@ import kotlin.reflect.KClass
 
 abstract class BaseFragment<out VM : ViewModel, DB : ViewDataBinding>(viewModelClass: KClass<VM>) : Fragment() {
 
+
+    val KEY_SELECTED_MOVIE = "selected_movie"
+    val KEY_SELECTED_MOVIES_TYPE = "selected_type_movie"
+    val KEY_SELECTED_MOVIE_LIST = "selected_movie_LİST"
+
     //no need for ViewModelProviders
     val viewModel: VM by viewModelByClass(viewModelClass)
 
