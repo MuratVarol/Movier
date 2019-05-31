@@ -32,6 +32,10 @@ class MoviesFragment : BaseFragment<MoviesVM, FragmentMoviesBinding>(MoviesVM::c
     }
 
 
+    /**
+     * pushing value to selectedMovie will trigger below method
+     * MovieDetailFragment will be called with selected movie.
+     */
     private fun subscribeSelectedMovie() {
         viewModel.selectedMovie.observe(this) {
             it?.let { movieModel ->
@@ -45,6 +49,11 @@ class MoviesFragment : BaseFragment<MoviesVM, FragmentMoviesBinding>(MoviesVM::c
         }
     }
 
+
+    /**
+     * pushing value to singleSelectedMovies (List of Movies by type) will trigger below method
+     * SingleTypeMoviesFragment will be called with movie list of selected type.
+     */
     private fun subscribeSelectedSingleTypeMovies() {
         viewModel.singleSelectedMovies.observe(this) {
             it?.let { movieModelWithType ->

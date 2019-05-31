@@ -58,6 +58,9 @@ class SingleTypeMoviesFragment : BaseFragment<MoviesVM, FragmentSingleTypeMovies
         setRecyclerViewListeners()
     }
 
+    /**
+     * Reset states of endlessRecyclerViewScrollListener for prevent unnecessary onLoadMore method calling
+     */
     private fun subscribeResetScrollState() {
         viewModel.isNeedToResetScrollState.observe(this) {
             if (it == true)
@@ -66,6 +69,10 @@ class SingleTypeMoviesFragment : BaseFragment<MoviesVM, FragmentSingleTypeMovies
     }
 
 
+    /**
+     * pushing value to selectedMovie will trigger below method
+     * MovieDetailFragment will be called with selected movie.
+     */
     private fun subscribeSelectedMovie() {
         viewModel.selectedMovie.observe(this) {
             it?.let { movieModel ->
@@ -79,6 +86,9 @@ class SingleTypeMoviesFragment : BaseFragment<MoviesVM, FragmentSingleTypeMovies
         }
     }
 
+    /**
+     * RecyclerView endless scrolling listener
+     */
     private fun setRecyclerViewListeners() {
         val gridLayoutManager = GridLayoutManager(context, 2)
         binding.rvMovies.layoutManager = gridLayoutManager

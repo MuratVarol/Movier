@@ -8,6 +8,10 @@ class MovieDetailVM : BaseVM() {
     val selectedMovie = SingleLiveEvent<MoviesModel>()
 
 
+    /**
+     * Setter for Selected Movie
+     * @param moviesModel: Single Movie object for show in Detail View
+     */
     fun setSelectedMovie(moviesModel: MoviesModel) {
         selectedMovie.postValue(moviesModel)
     }
