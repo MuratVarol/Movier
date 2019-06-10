@@ -1,0 +1,25 @@
+*****************************************
+*****************************************
+*****************************************
+
+    TO ADD NEW MOVIE SECTION;
+
+1- In MovieTypes sealed class, add new type and define name with api requirements
+2- In MoviesVM class add new method as following
+
+        fun 'getNewTypeMovies'(page: Int = 1) {
+            getMoviesByType(MovieTypes.'NEW_TYPE', page)
+        }
+
+3- In MoviesVM class; inside of getAllMovies() method, add new method which you created in
+    section 2(upper method) inside of Observable.just brackets after comma.
+
+4- To enable infinite scroll on new movie section;
+    add new lines to SingleTypeMoviesFragment's setRecyclerViewListeners() method's onLoadMore() override method as;
+
+    MovieTypes.'NEW_TYPE'.name ->
+        viewModel.'getNewTypeMovies'(pageCount)
+
+//*** change names in single quotes as needed ***//
+
+**************   THAT'S ALL ***************
